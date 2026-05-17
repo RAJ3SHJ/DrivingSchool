@@ -514,14 +514,14 @@ footer{background:linear-gradient(180deg,#06142e,#04102a);padding:40px 0 20px}
       <p>Fill in your details and we will call you back within 24 hours.</p>
       <div class="eform">
         <div class="frow">
-          <div class="fg"><label>Full Name *</label><input type="text" placeholder="Your full name"></div>
-          <div class="fg"><label>Phone Number *</label><input type="tel" placeholder="Your mobile number"></div>
+          <div class="fg"><label>Full Name *</label><input id="fname" type="text" placeholder="Your full name"></div>
+          <div class="fg"><label>Phone Number *</label><input id="fphone" type="tel" placeholder="Your mobile number"></div>
         </div>
         <div class="frow">
-          <div class="fg"><label>Preferred Time Slot</label><select><option>Morning (7am – 10am)</option><option>Afternoon (10am – 1pm)</option><option>Evening (4pm – 7pm)</option></select></div>
-          <div class="fg"><label>Batch Preference</label><select><option>General Batch</option><option>Ladies Batch</option></select></div>
+          <div class="fg"><label>Preferred Time Slot</label><select id="fslot"><option>Morning (7am – 10am)</option><option>Afternoon (10am – 1pm)</option><option>Evening (4pm – 7pm)</option></select></div>
+          <div class="fg"><label>Batch Preference</label><select id="fbatch"><option>General Batch</option><option>Ladies Batch</option></select></div>
         </div>
-        <div class="fg"><label>Message (Optional)</label><textarea placeholder="Any specific requirements..."></textarea></div>
+        <div class="fg"><label>Message (Optional)</label><textarea id="fmsg" placeholder="Any specific requirements..."></textarea></div>
         <button class="submit-btn" onclick="submitForm()">📋 Send Enquiry</button>
         <p class="form-note">🔒 Your information is safe. We will call you within 24 hours.</p>
       </div>
@@ -599,7 +599,28 @@ function showTab(id,btn){
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
 }
-function submitForm(){alert('Thank you! Your enquiry has been submitted.\n\nWe will call you back within 24 hours.\n\nFor immediate help call: 9000 111 076')}
+function submitForm(){
+  var name = document.getElementById('fname').value.trim();
+  var phone = document.getElementById('fphone').value.trim();
+  var slot = document.getElementById('fslot').value;
+  var batch = document.getElementById('fbatch').value;
+  var msg = document.getElementById('fmsg').value.trim();
+
+  if(!name || !phone){
+    alert('Please enter your Name and Phone Number.');
+    return;
+  }
+
+  var text = "Hello Om Sai Sandhya Driving School!%0A%0A"
+    + "Name: " + name + "%0A"
+    + "Phone: " + phone + "%0A"
+    + "Time Slot: " + slot + "%0A"
+    + "Batch: " + batch + "%0A"
+    + (msg ? "Message: " + msg + "%0A" : "")
+    + "%0APlease contact me. Thank you!";
+
+  window.open("https://wa.me/919989034132?text=" + text, "_blank");
+}
 </script>
 </body>
 </html>
