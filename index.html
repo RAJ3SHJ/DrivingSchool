@@ -184,6 +184,8 @@ nav{background:#fff;border-bottom:3px solid var(--red);position:sticky;top:0;z-i
 .fg textarea{resize:vertical;min-height:76px}
 .submit-btn{width:100%;background:var(--red);color:#fff;padding:13px;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:opacity .2s}
 .submit-btn:hover{opacity:.88}
+.eform .wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;padding:13px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:opacity .2s;width:100%}
+.eform .wa-btn:hover{opacity:.88}
 .form-note{text-align:center;font-size:11px;color:var(--muted);margin-top:8px}
 @media(max-width:500px){
   .frow{grid-template-columns:1fr}
@@ -523,6 +525,7 @@ footer{background:linear-gradient(180deg,#06142e,#04102a);padding:40px 0 20px}
         </div>
         <div class="fg"><label>Message (Optional)</label><textarea id="fmsg" placeholder="Any specific requirements..."></textarea></div>
         <button class="submit-btn" onclick="submitForm()">📋 Send Enquiry</button>
+        <a href="https://wa.me/919000111076" target="_blank" class="wa-btn" style="margin-top:10px">💬 Chat on WhatsApp</a>
         <p class="form-note">🔒 Your information is safe. We will call you within 24 hours.</p>
       </div>
     </div>
@@ -611,15 +614,17 @@ function submitForm(){
     return;
   }
 
-  var text = "Hello Om Sai Sandhya Driving School!%0A%0A"
+  var subject = "New Driving School Enquiry - " + name;
+  var body = "Hello Om Sai Sandhya Driving School,%0A%0A"
+    + "I would like to enquire about joining your driving school.%0A%0A"
     + "Name: " + name + "%0A"
     + "Phone: " + phone + "%0A"
-    + "Time Slot: " + slot + "%0A"
-    + "Batch: " + batch + "%0A"
+    + "Preferred Time Slot: " + slot + "%0A"
+    + "Batch Preference: " + batch + "%0A"
     + (msg ? "Message: " + msg + "%0A" : "")
-    + "%0APlease contact me. Thank you!";
+    + "%0APlease contact me at your earliest convenience.%0A%0AThank you!";
 
-  window.open("https://wa.me/919989034132?text=" + text, "_blank");
+  window.open("mailto:omsaisandhyadrivingschool@gmail.com?subject=" + subject + "&body=" + body, "_blank");
 }
 </script>
 </body>
